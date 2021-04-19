@@ -6,6 +6,8 @@ const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
 const generateHtml = require("./lib/generateHtml");
 
+const team = [];
+
 function addManager() {
     inquirer.prompt([
         {
@@ -31,38 +33,17 @@ function addManager() {
     ]).then(({managerName, managerId, managerEmail, managerOfficeNum}) => {
         console.log(managerName, managerId, managerEmail, managerOfficeNum);
         const managerObj = new Manager(managerName, managerId, managerEmail, managerOfficeNum);
-        console.log(managerObj);
-        fs.writeFile("team.html", generateHtml({managerName, managerId, managerEmail, managerOfficeNum}), (err) => {
-            if (err) {
-                throw err;
-            } else {
-                console.log("HTML generated!")
-            }
-        })
+        // console.log(managerObj);
+        // fs.writeFile("team.html", generateHtml({managerName, managerId, managerEmail, managerOfficeNum}), (err) => {
+        //     if (err) {
+        //         throw err;
+        //     } else {
+        //         console.log("HTML generated!")
+        //     }
+        // })
+        team.push(managerObj);
+        console.log(team);
         addTeamMember();
-    })
-}
-
-function addTeamMember() {
-    inquirer.prompt([
-        {
-            name: "team",
-            type: "list",
-            message: "Which type of team member would you like to add?",
-            choices: ["Engineer", "Intern", "I don't want to add any more team members"]
-        }
-    ]).then(answers => {
-        switch(answers.team) {
-            case "Engineer":
-                addEngineer()
-                break;
-            case "Intern":
-                addIntern()
-                break;
-            case "I don't want to add any more team members":
-                console.log("I've added all my team members")
-                break;
-        }
     })
 }
 
@@ -92,13 +73,15 @@ function addEngineer() {
         console.log(engineerName, engineerId, engineerEmail, engineerGithub);
         const engineerObj = new Engineer(engineerName, engineerId, engineerEmail, engineerGithub);
         console.log(engineerObj);
-        fs.writeFile("team.html", `${engineerName, engineerId, engineerEmail, engineerGithub}`, (err) => {
-            if (err) {
-                throw err;
-            } else {
-                console.log("HTML updated!")
-            }
-        })
+        // fs.writeFile("team.html", `${engineerName, engineerId, engineerEmail, engineerGithub}`, (err) => {
+        //     if (err) {
+        //         throw err;
+        //     } else {
+        //         console.log("HTML updated!")
+        //     }
+        // })
+        team.push(engineerObj);
+        console.log(team);
         addTeamMember();
     })
 }
@@ -129,7 +112,33 @@ function addIntern() {
         console.log(internName, internId, internEmail, internSchool);
         const internObj = new Intern(internName, internId, internEmail, internSchool);
         console.log(internObj);
+        team.push(internObj);
+        console.log(team);
         addTeamMember();
+    })
+}
+
+function addTeamMember() {
+    inquirer.prompt([
+        {
+            name: "team",
+            type: "list",
+            message: "Which type of team member would you like to add?",
+            choices: ["Engineer", "Intern", "I don't want to add any more team members"]
+        }
+    ]).then(answers => {
+        switch(answers.team) {
+            case "Engineer":
+                addEngineer()
+                break;
+            case "Intern":
+                addIntern()
+                break;
+            case "I don't want to add any more team members":
+                console.log("I've added all my team members")
+                generateHtml();
+                break;
+        }
     })
 }
 
