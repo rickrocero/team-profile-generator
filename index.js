@@ -31,10 +31,10 @@ function addManager() {
             message: "What is your team manager's office number?"
         }
     ]).then(({managerName, managerId, managerEmail, managerOfficeNum}) => {
-        console.log(managerName, managerId, managerEmail, managerOfficeNum);
+        // console.log(managerName, managerId, managerEmail, managerOfficeNum);
         const managerObj = new Manager(managerName, managerId, managerEmail, managerOfficeNum);
         team.push(managerObj);
-        console.log(team);
+        // console.log(team);
         addTeamMember();
     })
 }
@@ -62,11 +62,11 @@ function addEngineer() {
             message: "What is your engineer's Github username?"
         }
     ]).then(({engineerName, engineerId, engineerEmail, engineerGithub}) => {
-        console.log(engineerName, engineerId, engineerEmail, engineerGithub);
+        // console.log(engineerName, engineerId, engineerEmail, engineerGithub);
         const engineerObj = new Engineer(engineerName, engineerId, engineerEmail, engineerGithub);
-        console.log(engineerObj);
+        // console.log(engineerObj);
         team.push(engineerObj);
-        console.log(team);
+        // console.log(team);
         addTeamMember();
     })
 }
@@ -94,11 +94,11 @@ function addIntern() {
             message: "What is your intern's school?"
         }
     ]).then(({internName, internId, internEmail, internSchool}) => {
-        console.log(internName, internId, internEmail, internSchool);
+        // console.log(internName, internId, internEmail, internSchool);
         const internObj = new Intern(internName, internId, internEmail, internSchool);
-        console.log(internObj);
+        // console.log(internObj);
         team.push(internObj);
-        console.log(team);
+        // console.log(team);
         addTeamMember();
     })
 }
