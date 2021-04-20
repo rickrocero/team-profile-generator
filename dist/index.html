@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- Compiled and minified CSS -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <link rel="stylesheet" href="./styles.css">     
     <title>My Team</title>
 </head>
 <body>
@@ -11,27 +15,34 @@
         <h1>My Team</h1>
     </header>
     <main id="team-container">
-        <div id="manager">
-            <h3>${data.managerName}</h3>
-            <h3>${data.manager.getRole()}</h3>
-            <p>ID: ${data.managerId}</p>
-            <p>Email: ${data.managerEmail}</p>
-            <p>Office number: ${data.managerOfficeNum}</p>
-        </div>
-        <div id="engineer">
-            <h3>${data.engineerName}</h3>
-            <h3>${data.engineer.getRole()}</h3>
-            <p>ID: ${data.engineerId}</p>
-            <p>Email: ${data.engineerEmail}</p>
-            <p>GitHub: ${data.engineerGithub}</p>
-        </div>
-        <div id="intern">
-            <h3>${data.internName}</h3>
-            <h3>${data.intern.getRole()}</h3>
-            <p>ID: ${data.internId}</p>
-            <p>Email: ${data.internEmail}</p>
-            <p>School: ${data.internSchool}</p>
-        </div>
+        ${teamArray.join("")}
     </main>
 </body>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </html>
+
+<div id="manager">
+    <h3>${employee.name}</h3>
+    <h3>${employee.role}</h3>
+    <p>ID: ${employee.id}</p>
+    <p>Email: <a href="${employee.email}">${employee.email}</a></p>
+    <p>Office number: ${employee.officeNumber}</p>
+</div>
+
+<div id="engineer">
+    <h3>${employee.name}</h3>
+    <h3>${employee.role}</h3>
+    <p>ID: ${employee.id}</p>
+    <p>Email: <a href="${employee.email}">${employee.email}</a></p>
+    <p>GitHub: <a href="${employee.github}">${employee.github}</a></p>
+</div>
+
+<div id="intern">
+    <h3>${employee.name}</h3>
+    <h3>${employee.role}</h3>
+    <p>ID: ${employee.id}</p>
+    <p>Email: <a href="${employee.email}">${employee.email}</a></p>
+    <p>School: ${employee.school}</p>
+</div>
+
